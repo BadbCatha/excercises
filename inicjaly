@@ -1,0 +1,20 @@
+=begin
+Napisz metodę initials, która wypisuje inicjały osoby na podstawie jej pełnego imienia.
+Wszystkie znaki inicjałów powinny być pisane z dużej litery.
+
+=end
+
+
+def initials(nazwisko)
+  sum =""
+  nazwisko.each_char do |nazwisko|
+  
+    if nazwisko.upcase
+      sum = sum + nazwisko
+      return sum 
+    end
+  end
+end
+
+initials("Jan Kowalski")
+
