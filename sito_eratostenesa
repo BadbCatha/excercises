@@ -1,0 +1,25 @@
+def sito(i)
+ array = []
+ (0..i+1).each do |v| array << true
+ array[0] = false
+ array [1] = false
+end
+# puts array
+(2 .. Math.sqrt(i)).each do |value|
+  helper = value
+        if array[value] == true
+     
+      while value < i
+       value = value + helper
+       array[value] = false
+     end
+   end
+
+ 
+ end
+
+ array.each_index {|x| print  "#{x} " if  array[x] == true}   
+
+end
+
+sito(100)
