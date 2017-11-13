@@ -1,0 +1,22 @@
+=begin
+Napisz funkcję obliczającą ilość samogłosek w podanym ciągu znaków. 
+Jako samogłoskiuznajemy: a, e, i, o, u oraz y
+=end
+
+def vowel_count(word)
+  suma= 0
+  a = ["a", "e", "i", "y", "o", "u"]
+  word.each_char do |word|
+    if a.include? word
+      suma = suma + 1
+    end
+   puts word
+  end
+  puts suma
+end
+
+
+
+
+
+vowel_count("a lot of wovels y!")
