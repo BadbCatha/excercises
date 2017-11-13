@@ -1,4 +1,4 @@
-=begin
+﻿=begin
 Napisz metodę initials, która wypisuje inicjały osoby na podstawie jej pełnego imienia.
 Wszystkie znaki inicjałów powinny być pisane z dużej litery.
 
@@ -18,3 +18,35 @@ end
 
 initials("Jan Kowalski")
 
+=begin
+nie wiem czemu nie zlicza wszystkich dużych liter.
+znalazłam taki kod, ale nie mam pojecia skąd są pewne komendy
+
+
+class String
+  def is_upper?
+    self == self.upcase
+  end
+
+  def is_lower?
+    self == self.downcase
+  end
+end
+
+"a".is_upper? #=> false
+"A".is_upper? #=> true
+Using the method in the answer suggested by the commenter above and monkey patching String, you could do this:
+
+class String
+  def is_upper?
+    !!self.match(/\p{Upper}/)
+  end
+
+  def is_lower?
+    !!self.match(/\p{Lower}/)
+    # or: !self.is_upper?
+  end
+end
+
+konkretnie, co to jest to: /\p{Lower}/ 
+=end
