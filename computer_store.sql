@@ -75,9 +75,21 @@ SELECT products.name,price,manufacturer_id, manufacturers.name FROM products INN
 --11 bez dublowania ID
 SELECT products.name,price, manufacturers.name FROM products INNER JOIN manufacturers ON manufacturers.id = manufacturer_id;
 
---15 bez nazwy na razie
-SELECT  name, MIN(price)  FROM products;
+--12 Wyświetl średnią cenę produktów dla każdego producenta oraz jego id.
+SELECT manufacturer_id, AVG(price) AS average_price FROM products GROUP BY manufacturer_id;
 
+--13 Wyświetl średnią cenę produktów dla każdego producenta oraz jego nazwę
+SELECT manufacturers.name, AVG(price) AS average_price FROM products INNER JOIN manufacturers ON manufacturers.id = manufacturer_id GROUP BY manufacturers.name;
+
+--14 Wyświetl nazwy producentów których produkty mają średnią cenę większą bądz równą 150.  NIE WYCHODZI
+SELECT manufacturers.name, AVG(products.price) AS average_price  FROM products, manufacturers WHERE manufacturers.id = manufacturer_id AND AVG(products.price) >= 150  GROUP BY manufacturers.name; 
+
+--15 
+SELECT  name, price FROM products ORDER BY price LIMIT 1 ;
+
+--16 Wyświetl nazwę każdego producenta wraz z nazwą oraz ceną najdroższego produktu tego producenta. NIE WYCHODZI
+SELECT products.name, MAX(price) AS max_price,  FROM products INNER JOIN manufacturers ON manufacturers.id = manufacturer_id GROUP BY  products.name;
+SELECT manufacturers.name, MAX(price), products.name FROM products ,N manufacturers WHERE manufacturers.id = manufacturer_id GROUP BY  manufacturers.name, products.name;
 
 --17
 SELECT  * FROM manufacturers LEFT OUTER JOIN products ON manufacturers.id = manufacturer_id WHERE products.name IS NULL;
