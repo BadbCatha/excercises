@@ -5,37 +5,37 @@ W komentarzach przy każdej linijce jest opisany wynik jaki ma wypisać dana met
 
 class Calculator
   attr_accessor :name
-  attr_reader :result
+ attr_reader :result
   def initialize (name)
     @name = name
+    @result = result
   end
   
+  
 
-   def add(number, other = 0)
-    result =  number + other
-  end
-=begin
-  def substract(number, other = 0)
-    number - other
+   def add(number)
+    @result =  @result + number
   end
 
-  def multiply(number, other = 0)
-    number * other
+  def substract(number)
+    @result =  @result - number
   end
-
-  def divide(number, other = 0)
-    number / other
+  def multiply(number)
+    @result =  @result * number
+  end
+  def divide(number)
+    @result =  @result / number
   end
   
   def clear
+    @result = 0
   end
-
   def change_sign
+   @result = - result
   end
-
   def print_history
   end
-=end
+
 end
 
 
@@ -47,8 +47,8 @@ calculator = Calculator.new("CASIO")
 puts calculator.name # prints CASIO
 
 calculator.add(2)
-calculator.add(3)
-puts calculator.result # prints 5
+#calculator.add(3)
+#puts calculator.result # prints 5
 =begin
 calculator.add(10)
 puts calculator.result # prints 15
