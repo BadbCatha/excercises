@@ -1,41 +1,52 @@
-﻿=begin
+=begin
 Zaprojektuj i zaimplementuj klasę kalkulator tak aby zadziałał poniższy kod. 
 W komentarzach przy każdej linijce jest opisany wynik jaki ma wypisać dana metoda pozastosowaniu na niej puts:
 =end
 
 class Calculator
   attr_accessor :name
- attr_reader :result
+  attr_reader :result, :history
   def initialize (name)
     @name = name
     @result = result
+    @history = history
+    @result = 0
+    @history = []
   end
   
   
 
-   def add(number)
+  def add(number)
     @result =  @result + number
+    @history << "add #{number}(result: #{result})"
   end
 
   def substract(number)
     @result =  @result - number
+    @history << "substract #{number}(result: #{result})"
+   
   end
   def multiply(number)
     @result =  @result * number
+    @history << "multiply #{number}(result: #{result})"
   end
   def divide(number)
     @result =  @result / number
+    @history << "divide #{number}(result: #{result})"
   end
   
   def clear
     @result = 0
+    @history << "clear (result: #{result})"
   end
   def change_sign
    @result = - result
+   @history << "change_sign (result: #{result})"
   end
   def print_history
+    print @history
   end
-
+ 
 end
 
 
@@ -47,14 +58,13 @@ calculator = Calculator.new("CASIO")
 puts calculator.name # prints CASIO
 
 calculator.add(2)
-#calculator.add(3)
-#puts calculator.result # prints 5
-=begin
+calculator.add(3)
+puts calculator.result # prints 5
 calculator.add(10)
 puts calculator.result # prints 15
 calculator.clear # set result to 0
 puts calculator.result # prints 0
-calculator.subtract(20)
+calculator.substract(20)
 puts calculator.result # prints -20
 calculator.multiply(3)
 puts calculator.result # prints -60
@@ -72,4 +82,3 @@ calculator.print_history
 # multiply 3 (result: -60)
 # divide 4 (result: -15)
 # change_sign (result: 15)
-=end
