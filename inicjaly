@@ -1,52 +1,24 @@
-﻿=begin
+=begin
 Napisz metodę initials, która wypisuje inicjały osoby na podstawie jej pełnego imienia.
 Wszystkie znaki inicjałów powinny być pisane z dużej litery.
-
 =end
 
 
-def initials(nazwisko)
-  sum =""
-  nazwisko.each_char do |nazwisko|
+def initials(name)
   
-    if nazwisko.upcase
-      sum = sum + nazwisko
-      return sum 
-    end
-  end
+  word = name.split #['marcin', 'nowak']
+  #word.capitalize
+  #puts word
+  
+  word.each do |init| 
+    new_name =  init[0].capitalize.to_s
+    print "#{new_name}"
+   
+ end
+ print "\n"
 end
 
-initials("Jan Kowalski")
+initials('Jan Kozlowski') #=> 'JK'
+initials('Jan Krzysztof Rakoczy') #=> 'JKR'
+initials('marcin nowak') #=> 'MN'
 
-=begin
-nie wiem czemu nie zlicza wszystkich dużych liter.
-znalazłam taki kod, ale nie mam pojecia skąd są pewne komendy
-
-
-class String
-  def is_upper?
-    self == self.upcase
-  end
-
-  def is_lower?
-    self == self.downcase
-  end
-end
-
-"a".is_upper? #=> false
-"A".is_upper? #=> true
-Using the method in the answer suggested by the commenter above and monkey patching String, you could do this:
-
-class String
-  def is_upper?
-    !!self.match(/\p{Upper}/)
-  end
-
-  def is_lower?
-    !!self.match(/\p{Lower}/)
-    # or: !self.is_upper?
-  end
-end
-
-konkretnie, co to jest to: /\p{Lower}/ 
-=end
